@@ -34,3 +34,6 @@ Route::get('/mentors_edit/{id}', 'App\Http\Controllers\MentorController@edit')->
 
 Route::put('/members_update/{id}', 'App\Http\Controllers\MemberController@update')->name('members.update');
 Route::put('/mentors_update/{id}', 'App\Http\Controllers\MentorController@update')->name('mentors.update');
+
+Route::get('/members_search', 'App\Http\Controllers\MemberController@search')->name('members.search');
+Route::get('/mentors_search', 'App\Http\Controllers\MentorController@search')->name('mentors.search');

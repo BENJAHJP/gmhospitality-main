@@ -21,37 +21,47 @@
                             </div>
                         @endif
 
-                        <div class="text-end">
+                        <div class="container text-end">
                             <a href="#" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#member-reg-modal">Add</a>
-                        </div>
+                        </div><br>
+
+                        <!-- search form -->
+                        <div class="container">
+                            <form action="{{ route('members.search') }}" method="get">
+                                <input class="form-control" type="text" name="search" placeholder="search here ....."><br>
+                                <button type="submit" class="btn btn-success rounded-pill">Search</button>
+                            </form>
+                        </div><br>
 
                         <!-- members registration table -->
-                        <table class="table table-striped table-boardered">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Phone Number</th>
-                                    <th>School</th>
-                                    <th>Mentor</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($members as $member) 
+                        <div class="container table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead>
                                     <tr>
-                                        <td>{{ $member->name }}</td>
-                                        <td>{{ $member->phone_number }}</td>
-                                        <td>{{ $member->school }}</td>
-                                        <td>{{ $member->mentor }}</td>
-                                        <td>
-                                            <a class="btn btn-success">Edit</a>
-                                            <a href="{{ url('/members/'.$member->id)}}"class="btn btn-danger">Delete</a>
-                                        </td>
+                                        <th>Name</th>
+                                        <th>Phone Number</th>
+                                        <th>School</th>
+                                        <th>Mentor</th>
+                                        <th>Action</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-
+                                </thead>
+                                <tbody>
+                                    @foreach ($members as $member) 
+                                        <tr>
+                                            <td>{{ $member->name }}</td>
+                                            <td>{{ $member->phone_number }}</td>
+                                            <td>{{ $member->school }}</td>
+                                            <td>{{ $member->mentor }}</td>
+                                            <td>
+                                                <a href="{{ url('/members_edit/'.$member->id) }}" class="btn btn-success rounded-pill">Edit</a>
+                                                <a href="{{ url('/members_destroy/'.$member->id)}}"class="btn btn-danger rounded-pill">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            {{ $members->onEachSide(1)->links() }}
+                        </div>
                         <!-- registration modal -->
 
                         <div class="modal fade" id="member-reg-modal" aria-labelledby="modal-title" aria-hidden="true">

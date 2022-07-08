@@ -21,9 +21,18 @@
                             </div>
                         @endif
 
-                        <div class="text-end">
+                        <div class="container text-end">
                             <a href="#" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#mentor-reg-modal">Add</a>
-                        </div>
+                        </div><br>
+
+
+                        <!-- search form -->
+                        <div class="container">
+                            <form action="{{ route('mentors.search') }}" method="get">
+                                <input class="form-control" type="text" name="search" placeholder="search here ....."><br>
+                                <button type="submit" class="btn btn-success rounded-pill">Search</button>
+                            </form>
+                        </div><br>
 
                         <!-- mentors table -->
 
@@ -40,7 +49,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @
                                     @foreach ($mentors as $mentor)
                                         <tr>
                                             <td>{{ $mentor->name }}</td>
@@ -49,13 +57,14 @@
                                             <td>{{ $mentor->department }}</td>
                                             <td>{{ $mentor->school }}</td>
                                             <td>
-                                                <a href="{{ url('/mentors_edit/'.$mentor->id) }}" class="btn btn-success rounded-pill">Edit</a>
+                                                <a href="{{ url('/mentors_edit/'.$mentor->id) }}" class="btn btn-success rounded-pill">Edit</a><br>
                                                 <a href="{{ url('/mentors_destroy/'.$mentor->id)}}"class="btn btn-danger rounded-pill">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $mentors->onEachSide(1)->links() }}
                         </div>
 
                         <!-- registration modal -->

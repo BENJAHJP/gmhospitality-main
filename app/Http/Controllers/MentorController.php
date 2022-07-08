@@ -12,7 +12,8 @@ class MentorController extends Controller
     }
     
     public function index(){
-        $mentors = Mentor::all();
+        //get all data
+        $mentors = Mentor::paginate(10);
 
         return view('mentors.index', compact('mentors'));
     }
@@ -32,6 +33,7 @@ class MentorController extends Controller
     }
 
     public function edit($id){
+        //edit query
         $mentor = Mentor::findOrFail($id);
         return view('mentors.edit', compact('mentor'));
     }
@@ -45,6 +47,7 @@ class MentorController extends Controller
     }
 
     public function update($id){
+        //update query
         $mentor = Mentor::findOrFail($id);
         $mentor->name = request('name');
         $mentor->phone_number = request('phone_number');
@@ -54,5 +57,18 @@ class MentorController extends Controller
         $mentor->update();
 
         return redirect('/mentors_index')->with('mssg', 'mentor updated successfully');
+    }
+
+    public function search(){
+        //search query
+        $search = request('search');
+
+        if($search){
+            $mentors = Mentor::where('name', 'LIKE', "%{$search}%")->paginate(3);
+        }else{
+            $mentors = Mentor::paginate(10);
+        }
+
+        return view('mentors.index', compact('mentors'));
     }
 }
