@@ -51,13 +51,19 @@ class MentorController extends Controller
 
     public function update($id){
         //update query
-        $mentor = Mentor::findOrFail($id);
-        $mentor->name = request('name');
-        $mentor->phone_number = request('phone_number');
-        $mentor->department = request('department');
-        $mentor->mentees = request('mentees');
-        $mentor->school = request('school');
-        $mentor->update();
+        try {
+            $mentor = Mentor::findOrFail($id);
+            $mentor->name = request('name');
+            $mentor->phone_number = request('phone_number');
+            $mentor->department = request('department');
+            $mentor->mentees = request('mentees');
+            $mentor->school = request('school');
+            $mentor->update();
+          
+        } catch (\Illuminate\Database\QueryException $e) {
+                return redirect('/mentors_index')->with('error', 'Please select the department');
+
+        }
 
         return redirect('/mentors_index')->with('mssg', 'mentor updated successfully');
     }

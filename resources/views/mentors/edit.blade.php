@@ -27,7 +27,7 @@
 
                         <select id="department" class="form-select" name="department" required="True" value="{{ $mentor->department }}">
 
-                            <option selected="selected" value="">{{ $mentor->department}}</option>
+                            <option selected disabled hidden>{{ $mentor->department}}</option>
 
                         @foreach($departments as $department)
                         

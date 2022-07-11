@@ -38,6 +38,12 @@
                             </div>
                         @endif
 
+                        @if (session('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
                         <!-- mentors table -->
 
                         <div class="container table-responsive">

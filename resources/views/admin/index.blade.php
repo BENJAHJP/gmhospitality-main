@@ -16,19 +16,19 @@
 
                    <!-- search form -->
                    <div class="container m-4">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="container text-start">
-                                        <a href="#" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#user-reg-modal">Add</a>
-                                    </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="container text-start">
+                                    <a href="#" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#user-reg-modal">Add</a>
                                 </div>
-                                <div class="col text-end">
-                                    <form action="{{ route('admin.search') }}" method="get">
-                                        <input class="form-control" type="text" name="search" placeholder="search here ....."><br>
-                                        <button type="submit" class="btn btn-success rounded-pill">Search</button> 
-                                    </form>
-                                </div>
-                            </div>   
+                            </div>
+                            <div class="col text-end">
+                                <form action="{{ route('admin.search') }}" method="get">
+                                    <input class="form-control" type="text" name="search" placeholder="search here ....."><br>
+                                    <button type="submit" class="btn btn-success rounded-pill">Search</button> 
+                                </form>
+                            </div>
+                        </div>   
                     </div>
 
 
