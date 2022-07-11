@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mentor;
+use App\Models\Department;
 
 class MentorController extends Controller
 {
@@ -13,9 +14,10 @@ class MentorController extends Controller
     
     public function index(){
         //get all data
+        $departments = Department::all();
         $mentors = Mentor::paginate(10);
 
-        return view('mentors.index', compact('mentors'));
+        return view('mentors.index', compact(['mentors','departments']));
     }
 
     public function store(){
@@ -34,8 +36,9 @@ class MentorController extends Controller
 
     public function edit($id){
         //edit query
+        $departments = Department::all();
         $mentor = Mentor::findOrFail($id);
-        return view('mentors.edit', compact('mentor'));
+        return view('mentors.edit', compact(['mentor', 'departments']));
     }
 
     public function destroy($id){
@@ -61,6 +64,7 @@ class MentorController extends Controller
 
     public function search(){
         //search query
+        $departments = Department::all();
         $search = request('search');
 
         if($search){
@@ -69,6 +73,6 @@ class MentorController extends Controller
             $mentors = Mentor::paginate(10);
         }
 
-        return view('mentors.index', compact('mentors'));
+        return view('mentors.index', compact(['mentors','departments']));
     }
 }

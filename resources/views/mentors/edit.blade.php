@@ -24,9 +24,17 @@
                         <input type="text" class="form-control" id="mentees" name="mentees" required="True" value="{{ $mentor->mentees }}">
 
                         <label for="department" class="form-label">Department:</label>
+
                         <select id="department" class="form-select" name="department" required="True" value="{{ $mentor->department }}">
-                            <option value="hospitality">Hospitality</option>
-                            <option value="media">Media</option>
+
+                            <option selected="selected" value="">{{ $mentor->department}}</option>
+
+                        @foreach($departments as $department)
+                        
+                            <option value="{{ $department->value }}">{{ $department->name }}</option>
+                            
+                        @endforeach
+                        
                         </select>
 
                         <label for="school" class="form-label">School:</label>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('content')
 <div class="container">
@@ -14,25 +14,29 @@
                         </div>
                     @endif
 
-                    <div class="card p-4">
+                    <!-- search form -->
+                    <div class="container m-4">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="container text-start">
+                                        <a href="#" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#mentor-reg-modal">Add</a>
+                                    </div>
+                                </div>
+                                <div class="col text-end">
+                                    <form action="{{ route('mentors.search') }}" method="get">
+                                        <input class="form-control" type="text" name="search" placeholder="search here ....."><br>
+                                        <button type="submit" class="btn btn-success rounded-pill">Search</button> 
+                                    </form>
+                                </div>
+                            </div>   
+                    </div>
+
+                    <div class="container p-0">
                         @if (session('mssg'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('mssg') }}
                             </div>
                         @endif
-
-                        <div class="container text-end">
-                            <a href="#" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#mentor-reg-modal">Add</a>
-                        </div><br>
-
-
-                        <!-- search form -->
-                        <div class="container">
-                            <form action="{{ route('mentors.search') }}" method="get">
-                                <input class="form-control" type="text" name="search" placeholder="search here ....."><br>
-                                <button type="submit" class="btn btn-success rounded-pill">Search</button>
-                            </form>
-                        </div><br>
 
                         <!-- mentors table -->
 
@@ -90,10 +94,12 @@
 
                                             <label for="department" class="form-label">Department:</label>
                                             <select id="department" class="form-select" name="department" required="True">
-                                                <option value="hospitality">Hospitality</option>
-                                                <option value="media">Media</option>
-                                            </select>
 
+                                            @foreach($departments as $department)
+                                                    <option value="{{ $department->value }}">{{ $department->name }}</option>        
+                                            @endforeach
+                                            
+                                            </select>
                                             <label for="school" class="form-label">School:</label>
                                             <input type="text" class="form-control" id="school" name="school" required="True">
 
