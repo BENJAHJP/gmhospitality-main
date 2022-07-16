@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "jquery": "^3.6.0",
         "mdb-ui-kit": "^4.2.0"
     }
 }

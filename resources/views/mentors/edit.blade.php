@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card shadow-sm">
                 <div class="card-header">
                     {{ __('Update Mentors') }}
                 </div>
@@ -21,7 +21,7 @@
                         <input type="tel" class="form-control" id="phone_number" name="phone_number" required="True" value="{{ $mentor->phone_number }}">
 
                         <label for="mentees" class="form-label">Mentees:</label>
-                        <input type="text" class="form-control" id="mentees" name="mentees" required="True" value="{{ $mentor->mentees }}">
+                        <textarea class="form-control" name="mentees" id="mentees" cols="30" rows="3">{{ $mentor->mentees }}</textarea>
 
                         <label for="department" class="form-label">Department:</label>
 

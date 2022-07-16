@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-primary p-5">
+<body class="p-5 " style="background-color:#E9524A;">
     <div id="app">
         <main class="py-4">
             @yield('content')

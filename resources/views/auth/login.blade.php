@@ -4,13 +4,20 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow-lg">
-                <div class="row">
-                    <div class="col">
-
+            <div class="card shadow-lg" style="border-radius: 1rem;">
+                <div class="container">
+                    <!-- <div class="col-5-sm">
+                        <img src="{{ asset('img/gm.jpg') }}" class="img" alt="">
+                    </div> -->
+                    <div class="d-flex justify-content-center container">
+                        <img
+                            src="{{ asset('img/gm.jpg') }}"
+                            alt="Gm logo"
+                            class="img-fluid rounded-start"
+                            style="height: 200px;"
+                        />
                     </div>
-                    <div class="col-8">
-                        <h2 class="text-center p-3">Welcome Back</h2>
+                    <div class="container p-0">
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf

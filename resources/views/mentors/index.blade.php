@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card shadow-sm">
                 <div class="card-header">{{ __('Mentors') }}</div>
 
                 <div class="card-body">
@@ -63,7 +63,7 @@
                                         <tr>
                                             <td>{{ $mentor->name }}</td>
                                             <td>{{ $mentor->phone_number }}</td>
-                                            <td>{{ $mentor->mentees }}</td>
+                                            <td>{!! str_replace("," ,"<br/>", $mentor->mentees ) !!}</td>
                                             <td>{{ $mentor->department }}</td>
                                             <td>{{ $mentor->school }}</td>
                                             <td>
@@ -95,9 +95,16 @@
                                             <label for="phone_number" class="form-label">Phone Number:</label>
                                             <input type="tel" class="form-control" id="phone_number" name="phone_number" required="True">
 
-                                            <label for="mentees" class="form-label">Mentees:</label>
-                                            <input type="text" class="form-control" id="mentees" name="mentees" required="True">
-
+                                            <!-- <div class="row"> -->
+                                                <label for="mentees" class="form-label">Mentees:</label>
+                                                <div class="mentee">
+                                                    <textarea class="form-control" name="mentees" id="mentees" cols="30" rows="1"></textarea>
+                                                </div>
+                                                <!-- <div>
+                                                    <a href="#" class="btn btn-info addRow">+</a>
+                                                </div> -->
+                                            <!-- </div> -->
+                                            
                                             <label for="department" class="form-label">Department:</label>
                                             <select id="department" class="form-select" name="department" required="True">
 
