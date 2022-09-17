@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow-lg">
+            <div class="card shadow-sm">
                 <div class="card-header">
                     {{ __('Update Users') }}
                 </div>
@@ -41,4 +41,4 @@
         </div>
     </div>
 </div>
-@endsection>
+@endsection
