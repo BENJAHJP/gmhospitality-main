@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <div class="card shadow-lg">
                 <div class="card-header">
-                    {{ __('Update Members') }}
+                    {{ __('Update Users') }}
                 </div>
 
                 <div class="card-body">
