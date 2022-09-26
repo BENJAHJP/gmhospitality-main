@@ -38,9 +38,11 @@
                                 <a href="{{ route('departments.index') }}" class="list-group-item list-group-item-action bg-danger">Departments</a>
                             @endif
                             
-                            <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-danger">Dashboard</a>
-                            <a href="{{ route('members.index') }}" class="list-group-item list-group-item-action bg-danger">Members</a>
-                            <a href="{{ route('mentors.index') }}" class="list-group-item list-group-item-action bg-danger">Mentors</a>
+                            @if (Auth::user()->role == 'user')
+                                <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-danger">Dashboard</a>
+                                <a href="{{ route('members.index') }}" class="list-group-item list-group-item-action bg-danger">Members</a>
+                                <a href="{{ route('mentors.index') }}" class="list-group-item list-group-item-action bg-danger">Mentors</a>
+                            @endif
                         </div>
                     </div>
                 
