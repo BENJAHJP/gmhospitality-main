@@ -27,18 +27,20 @@
 
             <!-- Sidebar -->
 
-                <div class="bg-white shadow-sm border-right" id="sidebar-wrapper" >
+                <div class="bg-danger shadow-sm border-right" id="sidebar-wrapper" >
                     <div class="sidebar-heading" >Grace Ministries</div>
                         <div class="list-group list-group-flush">
-                            <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-white">Dashboard</a>
-                            <a href="{{ route('members.index') }}" class="list-group-item list-group-item-action bg-white">Members</a>
-                            <a href="{{ route('mentors.index') }}" class="list-group-item list-group-item-action bg-white">Mentors</a>
 
-                            @if (Auth::user()->role == '1')
-                                <a href="{{ route('admin.index') }}" class="list-group-item list-group-item-action bg-white">Users</a>
-                                <a href="{{ route('departments.index') }}" class="list-group-item list-group-item-action bg-white">Departments</a>
+                            @if (Auth::user()->role == 'admin')
+                                <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-danger">Dashboard</a>
+                                <a href="{{ route('admin.index') }}" class="list-group-item list-group-item-action bg-danger">Users</a>
+                                <a href="{{ route('roles.index') }}" class="list-group-item list-group-item-action bg-danger">Roles</a>
+                                <a href="{{ route('departments.index') }}" class="list-group-item list-group-item-action bg-danger">Departments</a>
                             @endif
-
+                            
+                            <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-danger">Dashboard</a>
+                            <a href="{{ route('members.index') }}" class="list-group-item list-group-item-action bg-danger">Members</a>
+                            <a href="{{ route('mentors.index') }}" class="list-group-item list-group-item-action bg-danger">Mentors</a>
                         </div>
                     </div>
                 
@@ -48,22 +50,27 @@
             <div id="page-content-wrapper">
                 <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm mr-auto">
                     <div class="container">
-                        <a class="navbar-brand" href="{{ route('members.index')}}">
-                            Members 
-                        </a>  
-                        <a class="navbar-brand" href="{{ route('mentors.index')}}">
-                            Mentors 
-                        </a>
 
-                        @if(Auth::user()->role == '1')
+                        @if(Auth::user()->role == 'admin')
                             <a class="navbar-brand" href="{{ route('admin.index')}}">
                                 Users 
+                            </a>
+
+                            <a class="navbar-brand" href="{{ route('roles.index')}}">
+                                Roles 
                             </a>
 
                             <a class="navbar-brand" href="{{ route('departments.index')}}">
                                 Departments 
                             </a>
                         @endif
+
+                        <a class="navbar-brand" href="{{ route('members.index')}}">
+                            Members 
+                        </a>  
+                        <a class="navbar-brand" href="{{ route('mentors.index')}}">
+                            Mentors 
+                        </a>
 
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <span class="navbar-toggler-icon"></span>

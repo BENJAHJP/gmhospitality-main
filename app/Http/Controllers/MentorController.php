@@ -22,6 +22,14 @@ class MentorController extends Controller
 
     public function store(){
         
+        request()->validate([
+            'name'=>'required',
+            'phone_number'=>'required',
+            'department'=>'required',
+            'mentees'=>'required',
+            'school'=>'required'
+        ]);
+        
         //request data and send to db
         $mentor = new Mentor();
         $mentor->name = request('name');

@@ -27,11 +27,11 @@
 
                         <select id="department" class="form-select" name="department" required="True" value="{{ $mentor->department }}">
 
-                            <option selected disabled hidden>{{ $mentor->department}}</option>
+                            
 
                         @foreach($departments as $department)
                         
-                            <option value="{{ $department->value }}">{{ $department->name }}</option>
+                            <option value="{{ $department->value }}" {{ $department->value == $mentor->department ? 'selected' : ''}}>{{ $department->name }}</option>
                             
                         @endforeach
                         
@@ -41,9 +41,11 @@
                         <input type="text" class="form-control" id="school" name="school" required="True" value="{{ $mentor->school }}">
 
                         <div class="modal-footer">
-                            <a href="{{ url('mentors_index') }}" class="btn btn-success rounded-pill">close</a>
-                            <button type="submit" class="btn btn-success rounded-pill">
-                                Update
+                            <a href="{{ url('mentors_index') }}" class="btn btn-outline-primary rounded-pill">
+                                <i class="fa-solid fa-times"></i>
+                            </a>
+                            <button type="submit" class="btn btn-outline-primary rounded-pill">
+                                <i class="fa-solid fa-paper-plane"></i>
                             </button>
                         </div>
                     </form>

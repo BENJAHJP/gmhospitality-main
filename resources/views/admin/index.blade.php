@@ -19,13 +19,17 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="container text-start">
-                                    <a href="#" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#user-reg-modal">Add</a>
+                                    <a href="#" class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#user-reg-modal">
+                                        <i class="fa-solid fa-add"></i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="col text-end">
                                 <form action="{{ route('admin.search') }}" method="get">
                                     <input class="form-control" type="text" name="search" placeholder="search here ....."><br>
-                                    <button type="submit" class="btn btn-success rounded-pill">Search</button> 
+                                    <button type="submit" class="btn btn-outline-primary rounded-pill">
+                                        <i class="fa-solid fa-search"></i>
+                                    </button> 
                                 </form>
                             </div>
                         </div>   
@@ -46,7 +50,6 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>email</th>
-                                        <th>password</th>
                                         <th>role</th>
                                     </tr>
                                 </thead>
@@ -55,11 +58,14 @@
                                         <tr>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->password }}</td>
                                             <td>{{ $user->role }}</td>
                                             <td>
-                                                <a href="{{ url('/admin_edit/'.$user->id) }}" class="btn btn-success rounded-pill">Edit</a>
-                                                <a href="{{ url('/admin_destroy/'.$user->id)}}"class="btn btn-danger rounded-pill">Delete</a>
+                                                <a href="{{ url('/admin_edit/'.$user->id) }}" class="btn btn-outline-primary rounded-pill">
+                                                    <i class="fa-solid fa-paper-plane"></i>
+                                                </a>
+                                                <a href="{{ url('/admin_destroy/'.$user->id)}}"class="btn btn-outline-danger rounded-pill">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -90,13 +96,14 @@
                                             
                                             <label for="role" class="form-label">Role:</label>
                                             <select id="role" class="form-select" name="role" required="False">
-                                                <option value="1">Admin</option>
-                                                <option value="0">User</option>
+                                                @foreach($roles as $role)
+                                                    <option value="{{ $role->value }}">{{ $role->name }}</option>
+                                                @endforeach
                                             </select>
 
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-success rounded-pill">
-                                                    Submit
+                                                <button type="submit" class="btn btn-outline-primary rounded-pill">
+                                                    <i class="fa-solid fa-paper-plane"></i>
                                                 </button>
                                             </div>
                                         </form>

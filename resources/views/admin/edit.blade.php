@@ -24,15 +24,18 @@
                         <input type="password" class="form-control" id="password" name="password" required="True" value="{{ $user->password }}">
 
                         <label for="role" class="form-label">Role:</label>
-                        <select id="role" class="form-select" name="role" required="False" selected="{{ $user->role }}">
-                            <option value="1">Admin</option>
-                            <option value="0">User</option>
+                        <select id="role" class="form-select" name="role" required="True" value="{{ $user->role }}">
+                            @foreach($roles as $role)
+                                <option value="{{ $role->value }}" {{ $role->value == $user->role ? 'selected' : ''}}>{{ $role->name }}</option>
+                            @endforeach
                         </select>
 
                         <div class="modal-footer">
-                            <a href="{{ url('admin_index') }}" class="btn btn-success rounded-pill">close</a>
-                            <button type="submit" class="btn btn-success rounded-pill">
-                                Update
+                            <a href="{{ url('admin_index') }}" class="btn btn-outline-primary rounded-pill">
+                                <i class="fa-solid fa-times"></i>
+                            </a>
+                            <button type="submit" class="btn btn-outline-primary rounded-pill">
+                                <i class="fa-solid fa-paper-plane"></i>
                             </button>
                         </div>
                     </form>

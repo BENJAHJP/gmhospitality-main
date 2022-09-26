@@ -18,21 +18,31 @@ class DepartmentController extends Controller
     }
 
     public function store(){
+        request()->validate([
+            'name'=>'required',
+            'value'=>'required',
+        ]);
+
         $department = new Department();
         $department->name = request('name');
         $department->value = request('value');
         $department->save();
 
-        return redirect('/departments_index')->with('mssg', 'user registered successfuly'); 
+        return redirect('/departments_index')->with('mssg', 'department registered successfuly'); 
     }
 
     public function update($id){
+        request()->validate([
+            'name'=>'required',
+            'value'=>'required',
+        ]);
+        
         $department = Department::findOrFail($id);
         $department->name = request('name');
         $department->value = request('value');
         $department->update();
 
-        return redirect('/departments_index')->with('mssg', 'user updated successfuly');
+        return redirect('/departments_index')->with('mssg', 'department updated successfuly');
 
     }
 
@@ -40,7 +50,7 @@ class DepartmentController extends Controller
         $department = Department::findOrFail($id);
         $department->delete();
 
-        return redirect('/departments_index')->with('mssg', 'user deleted successfuly');
+        return redirect('/departments_index')->with('mssg', 'department deleted successfuly');
     }
 
     public function edit($id){

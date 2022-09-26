@@ -18,13 +18,17 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="container text-start">
-                                        <a href="#" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#department-reg-modal">Add</a>
+                                        <a href="#" class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#department-reg-modal">
+                                            <i class="fa-solid fa-add"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="col text-end">
                                     <form action="{{ route('departments.search') }}" method="get">
                                         <input class="form-control" type="text" name="search" placeholder="search here ....."><br>
-                                        <button type="submit" class="btn btn-success rounded-pill">Search</button> 
+                                        <button type="submit" class="btn btn-outline-primary rounded-pill">
+                                            <i class="fa-solid fa-search"></i>
+                                        </button> 
                                     </form>
                                 </div>
                             </div>   
@@ -53,8 +57,12 @@
                                             <td>{{ $department->value }}</td>
 
                                             <td>
-                                                <a href="{{ url('/departments_edit/'.$department->id) }}" class="btn btn-success rounded-pill">Edit</a>
-                                                <a href="{{ url('/departments_destroy/'.$department->id)}}"class="btn btn-danger rounded-pill">Delete</a>
+                                                <a href="{{ url('/departments_edit/'.$department->id) }}" class="btn btn-outline-primary rounded-pill">
+                                                    <i class="fa-solid fa-paper-plane"></i>
+                                                </a>
+                                                <a href="{{ url('/departments_destroy/'.$department->id)}}"class="btn btn-outline-danger rounded-pill">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -81,8 +89,8 @@
                                             <input type="text" class="form-control" id="value" name="value" required="True">
 
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-success rounded-pill">
-                                                    Submit
+                                                <button type="submit" class="btn btn-outline-primary rounded-pill">
+                                                    <i class="fa-solid fa-paper-plane"></i>
                                                 </button>
                                             </div>
                                         </form>

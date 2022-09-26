@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -13,9 +14,10 @@ class UserController extends Controller
     }
 
     public function index(){
+        $roles = Role::ALL();
         $users = User::paginate(10);
 
-        return view('admin.index', compact('users'));
+        return view('admin.index', compact('users','roles'));
     }
 
     public function store(){
@@ -31,9 +33,10 @@ class UserController extends Controller
     }
 
     public function edit($id){
+        $roles = Role::ALL();
         $user = User::findOrFail($id);
 
-        return view('admin.edit', compact('user'));
+        return view('admin.edit', compact('user','roles'));
 
     }
 
@@ -58,6 +61,7 @@ class UserController extends Controller
     }
 
     public function search(){
+        $roles = Role::All();
         $search = request('search');
         if($search){
             $users = User::where('name', 'LIKE', "%{$search}%")->paginate(3);
@@ -65,6 +69,6 @@ class UserController extends Controller
             $users = User::paginate(10);
         }
 
-        return view('admin.index', compact('users'));
+        return view('admin.index', compact('users','roles'));
     }
 }

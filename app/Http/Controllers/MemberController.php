@@ -20,6 +20,12 @@ class MemberController extends Controller
 
     public function store(){
 
+        request()->validate([
+            'name'=>'required',
+            'phone_number'=>'required',
+            'mentor'=>'required',
+            'school'=>'required'
+        ]);
         //request data and send to db 
         $member = new Member();
         $member->name = request('name');
@@ -46,6 +52,13 @@ class MemberController extends Controller
     }
 
     public function update($id){
+        request()->validate([
+            'name'=>'required',
+            'phone_number'=>'required',
+            'mentor'=>'required',
+            'school'=>'required'
+        ]);
+        
         $member = Member::findOrFail($id);
         $member->name = request('name');
         $member->phone_number = request('phone_number');
