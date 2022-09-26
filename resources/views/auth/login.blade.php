@@ -64,7 +64,7 @@
 
                                 <div class="row mb-3">
                                     <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="col-md-8 btn btn-primary btn-block btn-user rounded-pill">
+                                        <button type="submit" class="col-md-8 btn btn-outline-primary btn-block btn-user rounded-pill">
                                             {{ __('Login') }}
                                         </button>
                                     </div>
