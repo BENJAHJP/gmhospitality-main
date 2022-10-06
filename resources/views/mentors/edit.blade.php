@@ -26,7 +26,6 @@
                         <label for="department" class="form-label">Department:</label>
 
                         <select id="department" class="form-select" name="department" required="True" value="{{ $mentor->department }}">
-
                             
 
                         @foreach($departments as $department)
@@ -39,6 +38,8 @@
 
                         <label for="school" class="form-label">School:</label>
                         <input type="text" class="form-control" id="school" name="school" required="True" value="{{ $mentor->school }}">
+
+                        <input type="hidden" class="form-control" name="created_by" required="True" value="{{ Auth::user()->name }}">
 
                         <div class="modal-footer">
                             <a href="{{ url('mentors_index') }}" class="btn btn-outline-primary rounded-pill">

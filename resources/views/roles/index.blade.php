@@ -88,6 +88,8 @@
                                             <label for="value" class="form-label">value:</label>
                                             <input type="text" class="form-control" id="value" name="value" required="True">
 
+                                            <input type="hidden" class="form-control" name="created_by" required="True" value="{{ Auth::user()->name }}">
+
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-outline-primary rounded-pill">
                                                     <i class="fa-solid fa-paper-plane"></i>

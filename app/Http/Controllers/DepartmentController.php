@@ -21,11 +21,13 @@ class DepartmentController extends Controller
         request()->validate([
             'name'=>'required',
             'value'=>'required',
+            'created_by'=>'required'
         ]);
 
         $department = new Department();
         $department->name = request('name');
         $department->value = request('value');
+        $department->created_by = request('created_by');
         $department->save();
 
         return redirect('/departments_index')->with('mssg', 'department registered successfuly'); 
@@ -35,11 +37,13 @@ class DepartmentController extends Controller
         request()->validate([
             'name'=>'required',
             'value'=>'required',
+            'created_by'=>'required'
         ]);
         
         $department = Department::findOrFail($id);
         $department->name = request('name');
         $department->value = request('value');
+        $department->created_by = request('created_by');
         $department->update();
 
         return redirect('/departments_index')->with('mssg', 'department updated successfuly');

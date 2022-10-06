@@ -27,7 +27,8 @@ class MentorController extends Controller
             'phone_number'=>'required',
             'department'=>'required',
             'mentees'=>'required',
-            'school'=>'required'
+            'school'=>'required',
+            'created_by'=>'required'
         ]);
         
         //request data and send to db
@@ -37,6 +38,7 @@ class MentorController extends Controller
         $mentor->department = request('department');
         $mentor->mentees = request('mentees');
         $mentor->school = request('school');
+        $mentor->created_by = request('created_by');
         $mentor->save();
         
         return redirect('/mentors_index')->with('mssg', 'mentor registered successfuly');  
@@ -64,7 +66,8 @@ class MentorController extends Controller
             'phone_number'=>'required',
             'department'=>'required',
             'mentees'=>'required',
-            'school'=>'required'
+            'school'=>'required',
+            'created_by'=>'required'
         ]);
             $mentor = Mentor::findOrFail($id);
             $mentor->name = request('name');
@@ -72,6 +75,7 @@ class MentorController extends Controller
             $mentor->department = request('department');
             $mentor->mentees = request('mentees');
             $mentor->school = request('school');
+            $mentor->created_by = request('created_by');
             $mentor->update();
 
         return redirect('/mentors_index')->with('mssg', 'mentor updated successfully');

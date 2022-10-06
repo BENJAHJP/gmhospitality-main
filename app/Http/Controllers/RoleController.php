@@ -21,11 +21,13 @@ class RoleController extends Controller
         request()->validate([
             'name'=>'required',
             'value'=>'required',
+            'created_by'=>'required'
         ]);
 
         $role = new Role();
         $role->name = request('name');
         $role->value = request('value');
+        $role->created_by = request('created_by');
         $role->save();
 
         return redirect('/roles_index')->with('role registered successfuly'); 
@@ -35,11 +37,13 @@ class RoleController extends Controller
         request()->validate([
             'name'=>'required',
             'value'=>'required',
+            'created_by'=>'required'
         ]);
         
         $role = Role::findOrFail($id);
         $role->name = request('name');
         $role->value = request('value');
+        $role->created_by = request('created_by');
         $role->update();
 
         return redirect('/roles_index')->with('role updated successfuly');

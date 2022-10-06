@@ -24,7 +24,8 @@ class MemberController extends Controller
             'name'=>'required',
             'phone_number'=>'required',
             'mentor'=>'required',
-            'school'=>'required'
+            'school'=>'required',
+            'created_by'=>'required'
         ]);
         //request data and send to db 
         $member = new Member();
@@ -32,6 +33,7 @@ class MemberController extends Controller
         $member->phone_number = request('phone_number');
         $member->school = request('school');
         $member->mentor = request('mentor');
+        $member->created_by = request('created_by');
         $member->save();
         
         return redirect('/members_index')->with('mssg', 'member registered successfuly');
@@ -56,7 +58,8 @@ class MemberController extends Controller
             'name'=>'required',
             'phone_number'=>'required',
             'mentor'=>'required',
-            'school'=>'required'
+            'school'=>'required',
+            'created_by'=>'required'
         ]);
         
         $member = Member::findOrFail($id);
@@ -64,6 +67,7 @@ class MemberController extends Controller
         $member->phone_number = request('phone_number');
         $member->school = request('school');
         $member->mentor = request('mentor');
+        $member->created_by = request('created_by');
         $member->update();
 
         return redirect('/members_index')->with('mssg', 'member updated successfully');

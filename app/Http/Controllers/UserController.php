@@ -21,10 +21,19 @@ class UserController extends Controller
     }
 
     public function store(){
+        request()->validate([
+            'name'=>'required',
+            'email'=>'required|unique:users',
+            'created_by'=>'required',
+            'password'=>'required',
+            'role'=>'required',
+        ]);
+
         // send data to db
         $user = new User();
         $user->name = request('name');
         $user->email = request('email');
+        $user->created_by = request('created_by');
         $user->password = Hash::make(request('password'));
         $user->role = request('role');
         $user->save();
@@ -44,6 +53,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->name = request('name');
         $user->email = request('email');
+        $user->created_by = request('created_by');
         $user->password = Hash::make(request('password'));
         $user->role = request('role');
         $user->update();

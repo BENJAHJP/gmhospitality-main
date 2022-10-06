@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
+            $table->string("created_by");
             $table->string('phone_number');
             $table->json('mentees');
             $table->string('department');

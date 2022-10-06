@@ -20,6 +20,8 @@
                         <label for="value" class="form-label">Value:</label>
                         <input type="text" class="form-control" id="value" name="value" required="True" value="{{ $department->value }}">
 
+                        <input type="hidden" class="form-control" name="created_by" required="True" value="{{ Auth::user()->name }}">
+
                         <div class="modal-footer">
                             <a href="{{ url('/departments_index') }}" class="btn btn-outline-primary rounded-pill">
                                 <i class="fa-solid fa-times"></i>
