@@ -50,6 +50,9 @@
                                         <th>Phone Number</th>
                                         <th>School</th>
                                         <th>Mentor</th>
+                                        @if ( Auth::user()->role == 'admin' )
+                                            <th> created_by </th>
+                                        @endif
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -60,9 +63,12 @@
                                             <td>{{ $member->phone_number }}</td>
                                             <td>{{ $member->school }}</td>
                                             <td>{{ $member->mentor }}</td>
+                                            @if ( Auth::user()->role == 'admin' )
+                                                <td> {{ $member->created_by }} </td>
+                                            @endif
                                             <td>
                                                 <a href="{{ url('/members_edit/'.$member->id) }}" class="btn btn-outline-primary rounded-pill">
-                                                    <i class="fa-solid fa-paper-plane"></i>
+                                                    <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                                 <a href="{{ url('/members_destroy/'.$member->id)}}"class="btn btn-outline-danger rounded-pill">
                                                     <i class="fa-solid fa-trash"></i>

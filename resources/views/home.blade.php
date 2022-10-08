@@ -78,7 +78,7 @@
                     <br>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class="card text-white bg-dark shadow-sm">
+                    <div class="card text-white bg-info shadow-sm">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-8">

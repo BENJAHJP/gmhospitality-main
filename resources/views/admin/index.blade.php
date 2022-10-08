@@ -51,6 +51,10 @@
                                         <th>Name</th>
                                         <th>email</th>
                                         <th>role</th>
+                                        @if ( Auth::user()->role == 'admin' )
+                                            <th> created_by </th>
+                                        @endif
+                                        <th> Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,9 +63,12 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->role }}</td>
+                                            @if ( Auth::user()->role == 'admin' )
+                                                <td> {{ $user->created_by }} </td>
+                                            @endif
                                             <td>
                                                 <a href="{{ url('/admin_edit/'.$user->id) }}" class="btn btn-outline-primary rounded-pill">
-                                                    <i class="fa-solid fa-paper-plane"></i>
+                                                    <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                                 <a href="{{ url('/admin_destroy/'.$user->id)}}"class="btn btn-outline-danger rounded-pill">
                                                     <i class="fa-solid fa-trash"></i>

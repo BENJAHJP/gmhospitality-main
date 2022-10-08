@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card shadow-sm">
-                <div class="card-header">{{ __('Departments') }}</div>
+                <div class="card-header">{{ __('Roles') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -48,6 +48,10 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Value</th>
+                                        @if ( Auth::user()->role == 'admin' )
+                                            <th> created_by </th>
+                                        @endif
+                                        <th> Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,10 +59,12 @@
                                         <tr>
                                             <td>{{ $role->name }}</td>
                                             <td>{{ $role->value }}</td>
-
+                                            @if ( Auth::user()->role == 'admin' )
+                                                <td> {{ $role->created_by }} </td>
+                                            @endif
                                             <td>
                                                 <a href="{{ url('/roles_edit/'.$role->id) }}" class="btn btn-outline-primary rounded-pill">
-                                                    <i class="fa-solid fa-paper-plane"></i>
+                                                    <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                                 <a href="{{ url('/roles_destroy/'.$role->id)}}"class="btn btn-outline-danger rounded-pill">
                                                     <i class="fa-solid fa-trash"></i>

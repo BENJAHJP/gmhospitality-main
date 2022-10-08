@@ -48,6 +48,10 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Value</th>
+                                        @if ( Auth::user()->role == 'admin' )
+                                            <th> created_by </th>
+                                        @endif
+                                        <th> Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,10 +59,12 @@
                                         <tr>
                                             <td>{{ $department->name }}</td>
                                             <td>{{ $department->value }}</td>
-
+                                            @if ( Auth::user()->role == 'admin' )
+                                                <td> {{ $department->created_by }} </td>
+                                            @endif
                                             <td>
                                                 <a href="{{ url('/departments_edit/'.$department->id) }}" class="btn btn-outline-primary rounded-pill">
-                                                    <i class="fa-solid fa-paper-plane"></i>
+                                                    <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                                 <a href="{{ url('/departments_destroy/'.$department->id)}}"class="btn btn-outline-danger rounded-pill">
                                                     <i class="fa-solid fa-trash"></i>

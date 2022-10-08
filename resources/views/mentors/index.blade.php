@@ -59,6 +59,9 @@
                                         <th>Mentees</th>
                                         <th>Department</th>
                                         <th>School</th>
+                                        @if ( Auth::user()->role == 'admin' )
+                                            <th> created_by </th>
+                                        @endif
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -70,9 +73,12 @@
                                             <td>{!! str_replace("," ,"<br/>", $mentor->mentees ) !!}</td>
                                             <td>{{ $mentor->department }}</td>
                                             <td>{{ $mentor->school }}</td>
+                                            @if ( Auth::user()->role == 'admin' )
+                                                <td> {{ $mentor->created_by }} </td>
+                                            @endif
                                             <td>
                                                 <a href="{{ url('/mentors_edit/'.$mentor->id) }}" class="btn btn-outline-primary rounded-pill">
-                                                    <i class="fa-solid fa-paper-plane"></i>
+                                                    <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                                 <a href="{{ url('/mentors_destroy/'.$mentor->id)}}"class="btn btn-outline-danger rounded-pill">
                                                     <i class="fa-solid fa-trash"></i>

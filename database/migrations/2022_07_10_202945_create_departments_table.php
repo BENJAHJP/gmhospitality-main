@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('value');
+            $table->string("created_by");
         });
     }
 
