@@ -85,7 +85,7 @@
                                     Mentors 
                                 </a>
                             </ul>
-                            <ul class="navbar-nav ms-auto">
+                                <ul class="navbar-nav ms-auto">
                                     <li class="nav-item dropdown">
                                         
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -104,7 +104,7 @@
                                             </form>
                                         </div>
                                     </li>
-                            </ul>
+                                </ul>
                         </div>
                     </div>
                 </nav>
