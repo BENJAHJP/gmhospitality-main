@@ -47,8 +47,7 @@
                             @endif
                         </div>
                     </div>
-                
-            
+
             <!-- /#sidebar-wrapper -->
             <!-- Page Content -->
             <div id="page-content-wrapper">
@@ -78,12 +77,14 @@
                                     </a>
                                 @endif
 
-                                <a class="navbar-brand" href="{{ route('members.index')}}">
-                                    Members 
-                                </a>  
-                                <a class="navbar-brand" href="{{ route('mentors.index')}}">
-                                    Mentors 
-                                </a>
+                                @if(Auth::user()->role == 'user')
+                                    <a class="navbar-brand" href="{{ route('members.index')}}">
+                                        Members 
+                                    </a>  
+                                    <a class="navbar-brand" href="{{ route('mentors.index')}}">
+                                        Mentors 
+                                    </a>
+                                @endif
                             </ul>
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item dropdown">
@@ -127,7 +128,7 @@
                 <!-- Footer -->
             </div>
             </div>
-                
+
             <!-- /#page-content-wrapper -->
 
             </div>
