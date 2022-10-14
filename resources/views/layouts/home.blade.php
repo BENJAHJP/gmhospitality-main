@@ -24,9 +24,7 @@
 <body>
     <div id="app">
         <div class="d-flex" id="wrapper" >
-
             <!-- Sidebar -->
-
                 <div class="bg-danger shadow-sm border-right" id="sidebar-wrapper" >
                     <div class="sidebar-heading" >Grace Ministry</div>
                         <div class="list-group list-group-flush">
@@ -47,90 +45,83 @@
                             @endif
                         </div>
                     </div>
+                    <!-- /#sidebar-wrapper -->
+                    <!-- Page Content -->
+                    <div id="page-content-wrapper">
+                        <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm mr-auto">
+                            <div class="container">
+                                <a class="navbar-brand" href="{{ url('/') }}">
+                                    {{ __('Grace Ministry') }}
+                                </a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
 
-            <!-- /#sidebar-wrapper -->
-            <!-- Page Content -->
-            <div id="page-content-wrapper">
-                <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm mr-auto">
-                    <div class="container">
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            {{ __('Grace Ministry') }}
-                        </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <!-- Right Side Of Navbar -->
-                            <ul class="navbar-nav ms-left">
-                                @if(Auth::user()->role == 'admin')
-                                    <a class="navbar-brand" href="{{ route('admin.index')}}">
-                                        Users 
-                                    </a>
-
-                                    <a class="navbar-brand" href="{{ route('roles.index')}}">
-                                        Roles 
-                                    </a>
-
-                                    <a class="navbar-brand" href="{{ route('departments.index')}}">
-                                        Departments 
-                                    </a>
-                                @endif
-
-                                @if(Auth::user()->role == 'user')
-                                    <a class="navbar-brand" href="{{ route('members.index')}}">
-                                        Members 
-                                    </a>  
-                                    <a class="navbar-brand" href="{{ route('mentors.index')}}">
-                                        Mentors 
-                                    </a>
-                                @endif
-                            </ul>
-                                <ul class="navbar-nav ms-auto">
-                                    <li class="nav-item dropdown">
-                                        
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
-                                        </a>
-
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <!-- Right Side Of Navbar -->
+                                    <ul class="navbar-nav ms-left">
+                                        @if(Auth::user()->role == 'admin')
+                                            <a class="navbar-brand" href="{{ route('admin.index')}}">
+                                                Users 
                                             </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </li>
-                                </ul>
+                                            <a class="navbar-brand" href="{{ route('roles.index')}}">
+                                                Roles 
+                                            </a>
+
+                                            <a class="navbar-brand" href="{{ route('departments.index')}}">
+                                                Departments 
+                                            </a>
+                                        @endif
+
+                                        @if(Auth::user()->role == 'user')
+                                            <a class="navbar-brand" href="{{ route('members.index')}}">
+                                                Members 
+                                            </a>  
+                                            <a class="navbar-brand" href="{{ route('mentors.index')}}">
+                                                Mentors 
+                                            </a>
+                                        @endif
+                                    </ul>
+                                        <ul class="navbar-nav ms-auto">
+                                            <li class="nav-item dropdown">
+                                                
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    {{ Auth::user()->name }}
+                                                </a>
+
+                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </a>
+
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                        @csrf
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    <div class="container-fluid">
+                    <main class="py-4">
+                        @yield('content')
+                    </main>
+                    <!-- Footer -->
+                    <footer class="page-footer font-small">
+                        <!-- Copyright -->
+                        <div class="footer-copyright text-center py-3">© 2022 Copyright:
+                        <a> Grace Ministry </a>
                         </div>
+                        <!-- Copyright -->
+                    </footer>
+                    <!-- Footer -->
                     </div>
-                </nav>
-            <div class="container-fluid">
-                
-                <main class="py-4">
-                    @yield('content')
-                </main>
-
-                <!-- Footer -->
-                <footer class="page-footer font-small">
-
-                <!-- Copyright -->
-                <div class="footer-copyright text-center py-3">© 2022 Copyright:
-                <a> Grace Ministry </a>
                 </div>
-                <!-- Copyright -->
-
-                </footer>
-                <!-- Footer -->
-            </div>
-            </div>
-
             <!-- /#page-content-wrapper -->
-
             </div>
             <!-- /#wrapper -->
         </div>
